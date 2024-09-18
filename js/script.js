@@ -41,17 +41,24 @@ function respostaSelecionada(opcaoSelecionada){
 }
 
 function mostraResultado(){
-    caixaPerguntas.textContent = `Em 2049, $(nome)`;
+    caixaPerguntas.textContent = `Em 2049, ${nome}`;
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
     caixaResultado.classlist.add("mostrar");
     botaoJogarNovamente.addEventListener("click", JogarNovamente);
 }
 
-function jogarNovamente {
+function jogarNovamente() {
     atual = 0;
     historiaFinal = "";
     caixaResultado.classlist.remove("mostrar");
 }
 
+function substituiNome () {
+    for (const pergunta of perguntas) {
+        peegunta.enunciado = pergunta.enunciado.replace(/você/g, nome);
+    }
+}
+
+substituiNome();
 mostraPergunta();

@@ -18,7 +18,7 @@ botaoIniciar.addEventListener('click', iniciaJogo);
 
 function iniciajogo() {
     atual = 0;
-    hisyotiaFinal = "";
+    histotiaFinal = "";
     telaInicial.style.display = 'none';
     caixaPerguntas.ClassList.remove(".mostrar");
     caixaAlternativas.ClassList.remove(".mostrar");
@@ -49,7 +49,12 @@ function mostraAlternativas(){
 function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
-    atual++;
+    if(opcaoSelecionada.proxima !== undefined) {
+        atual = opcaoSelecionada.proxima;
+    }else {
+        mostraResultado();
+        return;
+    }
     mostraPergunta();
 }
 
